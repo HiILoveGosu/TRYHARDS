@@ -13,7 +13,7 @@ function initialize() {
                 var marker = new google.maps.Marker({
                     position: myLatlng,
                     map: map,
-                    title: "text "+value.titel
+                    title: value.titel
                 });
                 var infowindow = new google.maps.InfoWindow({
                     content: value.omschrijving
@@ -23,7 +23,6 @@ function initialize() {
                 });
 
             });
-            console.log(data);
         })
         .fail(function (jqXHR, textStatus, err) {
             console.log('Data ophalen mislukt');
