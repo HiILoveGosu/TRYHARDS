@@ -1,0 +1,18 @@
+{
+  "delicten": [
+    {
+      "latitude": "51.202557",
+      "longitude": "3.210614",
+      "tijdstip": "28-4-2015 11:30",
+      "omschrijving": "Botsing met twee auto's",
+      "titel": "Botsing met twee auto's"
+    },
+    {
+      "latitude": "51.191435",
+      "longitude": "3.212575",
+      "tijdstip": "28-4-2015 9:30",
+      "omschrijving": "Nederlanders zijn aangekomen(jammer genoeg)",
+      "titel": "Nederlanders!!"
+    }
+  ]
+}
