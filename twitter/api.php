@@ -14,7 +14,7 @@ $lat = $_GET['lat'];
 $long = $_GET['long'];
 $radius = $_GET['radius'];
 $geocode = (string)$lat . "," . (string)$long . "," . (string)$radius;
-$statuses = $connection->get("search/tweets", array("q" => "", "geocode" => $geocode));
+$statuses = $connection->get("search/tweets", array("q" => "", "geocode" => $geocode, "result_type" => "recent", "until" => "2015-04-29"));
 /*
 print("<pre>");
 print_r($statuses);
@@ -39,4 +39,4 @@ $filters = array (
 );
 $filter = new COSFilter(json_decode(json_encode($statuses), true), $filters);
 
-return json_encode($filter->filter());
+print json_encode($statuses);
