@@ -1,6 +1,6 @@
 <?php
 require "twitteroauth/autoload.php";
-
+require "COSFilter.php";
 use Abraham\TwitterOAuth\TwitterOAuth;
 
 $access_token = "3216494091-dMxMpkulQ45xYYvfmwTp63r8hUrjLfbBNTBmNNw";
@@ -14,8 +14,29 @@ $lat = $_GET['lat'];
 $long = $_GET['long'];
 $radius = $_GET['radius'];
 $geocode = (string)$lat . "," . (string)$long . "," . (string)$radius;
-$statuses = $connection->get("search/tweets", array("q" => "Brugge", "geocode" => $geocode));
-echo "<pre>" . json_encode($content) . "</pre>";
+$statuses = $connection->get("search/tweets", array("q" => "", "geocode" => $geocode));
+/*
 print("<pre>");
 print_r($statuses);
-print("</pre>");
+print("</pre>");*/
+
+$filters = array (
+    "statuses" => array(
+        array(
+            "created_at",
+            "text",
+            "user" => array (
+                "name",
+                "screen_name"
+            ),
+            "geo" => array (
+                "coordinates" => array(
+                )
+            )
+        )
+    )
+
+);
+$filter = new COSFilter(json_decode(json_encode($statuses), true), $filters);
+
+return json_encode($filter->filter());
